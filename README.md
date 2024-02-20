@@ -3,22 +3,24 @@
 [![PyPI version](https://badge.fury.io/py/cdk-integ-runner-cwd-fix.svg)](https://badge.fury.io/py/cdk-integ-runner-cwd-fix)
 
 When running integ-test on python, the CWD is set to the directory which
-contains your test file - not the directory which contains your cdk.json.
+contains your test file - not the directory youre running your tests from.
 
-It also blows away the PYTHONPATH, so that no longer has your cdk project.
-
-This means that your test file has no access to the stacks you create, and
-you get a lot of ModuleNotFoundError when you try to import your stacks into
+It also changes PYTHONPATH, so your test file has no access to the stacks you create.
+Instead, you get a lot of ModuleNotFoundError when you try to import your stacks into
 the test case.
 
-It also breaks the lambda (and likely other) builds which rely on a path. So,
-If you're using `Code.from_asset("./lambda")` you should start using
+That also breaks the lambda (and likely other) builds which rely on a path.
+So, if you're using `Code.from_asset("./lambda")` you should start using
 `Code.from_asset(f"{os.getcwd()}/lambda")` instead, after using this fix.
 
-This is likely to be applicable to other constructs that rely on a relative path.
+This realtive path issue is likely to be applicable to other constructs that rely on
+a relative path and you can use a similar fix to work around it.
 
 This is a workaround to fix the CWD and PYTHONPATH so that your test file
 can import your stacks and run the integ tests.
+
+Maybe at some point this will be fixed in the CDK integ-runner, but for now this will get you
+up and running. integ-runner is a developer preview, so it's expected to have weirdnesses.
 
 ## Usage
 
