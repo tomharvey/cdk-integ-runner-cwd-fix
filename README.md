@@ -1,5 +1,7 @@
 # CDK integ-runner CWD Fix
 
+[![PyPI version](https://badge.fury.io/py/cdk-integ-runner-cwd-fix.svg)](https://badge.fury.io/py/cdk-integ-runner-cwd-fix)
+
 When running integ-test on python, the CWD is set to the directory which
 contains your test file - not the directory which contains your cdk.json.
 
