@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cdk-integ-runner-cwd-fix"
-version = "0.1.0"
+version = "0.1.1"
 description = "Fix the problem with CDK's integ-runner breaking the python path and current working directory."
 authors = ["Tom Harvey <tom@alush.co.uk>"]
 readme = "README.md"
